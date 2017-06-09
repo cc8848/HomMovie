@@ -1,13 +1,10 @@
 package cinema.business.entities;
 
-import java.util.Calendar;
-
 public class Customer {
 
     private Integer id = null;
     private String name = null;
-    private Calendar customerSince = null;
-
+    private String password = null;
     
     public Customer() {
         super();
@@ -28,13 +25,12 @@ public class Customer {
     public void setName(final String name) {
         this.name = name;
     }
-    
 
-    public Calendar getCustomerSince() {
-        return this.customerSince;
+    public String getPassword() {
+        return this.password;
     }
-    public void setCustomerSince(final Calendar customerSince) {
-        this.customerSince = customerSince;
+    public void setPassword(final String password) {
+        this.name = password;
     }
     
 }

@@ -23,7 +23,7 @@
 
   <properties>
     <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
-    <thymeleaf.version>3.0.6.RELEASE</thymeleaf.version>
+    <thymeleaf.version>3.0.5.RELEASE</thymeleaf.version>
   </properties>
   
   
