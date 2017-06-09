@@ -10,7 +10,6 @@ public class Customer {
         super();
     }
 
-
     public Integer getId() {
         return this.id;
     }
