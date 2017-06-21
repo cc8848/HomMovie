@@ -1,5 +1,14 @@
 package cinema.business.entities;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Cinema")
 public class Cinema {
 
     private Integer id = null;
@@ -9,7 +18,10 @@ public class Cinema {
     public Cinema() {
         super();
     }
-
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "CinemaId")
     public Integer getId() {
         return this.id;
     }
@@ -17,7 +29,7 @@ public class Cinema {
         this.id = id;
     }
     
-
+    @Column(name = "CinemaName")
     public String getName() {
         return this.name;
     }
@@ -25,6 +37,7 @@ public class Cinema {
         this.name = name;
     }
 
+    @Column(name = "CinemaAddr")
     public String getAddress() {
         return this.address;
     }

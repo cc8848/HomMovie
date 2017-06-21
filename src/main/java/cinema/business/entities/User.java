@@ -7,29 +7,31 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
 @Entity
-@Table(name = "Movie")
-public class Movie {
+@Table(name = "User")
+public class User {
+
     private Integer id = null;
     private String name = null;
-    private String picurl = null;
-    private String description = null;
+    private String password = null;
+    private String phone = null;
     
-    public Movie() {
+    public User() {
         super();
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "MovieId")
+    @Column(name = "CustomerId")
     public Integer getId() {
         return this.id;
     }
     public void setId(final Integer id) {
         this.id = id;
     }
-
-    @Column(name = "MovieName")
+    
+    @Column(name = "UserName")
     public String getName() {
         return this.name;
     }
@@ -37,19 +39,20 @@ public class Movie {
         this.name = name;
     }
 
-    @Column(name = "MovieImg")
-    public String getPicurl() {
-        return this.picurl;
+    @Column(name = "Password")
+    public String getPassword() {
+        return this.password;
     }
-    public void setPicurl(final String picurl) {
-        this.picurl = picurl;
+    public void setPassword(final String password) {
+        this.name = password;
     }
 
-    @Column(name = "MovieDesc")
-    public String getDescription() {
-        return this.description;
+    @Column(name = "Phone")
+    public String getPhone() {
+        return this.phone;
     }
-    public void setDescription(final String description) {
-        this.description = description;
+    public void setPhone(final String phone) {
+        this.phone = phone;
     }
+    
 }

@@ -1,40 +1,22 @@
 package cinema.business.entities.repositories;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import cinema.business.entities.Movie;
 
 
-public class MovieRepository {
-    private static final MovieRepository INSTANCE = new MovieRepository();
-    private final Map<Integer,Movie>moviesById;
+@Repository
+public interface MovieRepository extends CrudRepository<Movie, Integer>  {
+    @Query("select * from Movie")
+    public List<Movie> findAll();
 
-    public static MovieRepository getInstance() {
-        return INSTANCE;
-    }
+    @Query("select * from Movie where MovieId = ?1")
+    public Movie findById(final Integer id);
 
-    private MovieRepository() {
-        super();
-        this.moviesById = new LinkedHashMap<Integer, Movie>();
-    }
-    
-    public void addMovie(Movie movie) {
-    	this.moviesById.put(movie.getId(), movie);
-    }
-
-    public void deleteMovie(Movie movie) {
-    	this.moviesById.remove(movie.getId());
-    }
-    
-    public List<Movie> findAll() {
-        return new ArrayList<Movie>(this.moviesById.values());
-    }
-    
-    public Movie findById(final Integer id) {
-        return this.moviesById.get(id);
-    }
+    @Query("select * from Movie where MovieName = ?1")
+    public Movie findByName(final String name);
     
 }

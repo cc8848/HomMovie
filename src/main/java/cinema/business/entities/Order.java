@@ -1,20 +1,37 @@
 package cinema.business.entities;
 
-import java.util.Calendar;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+import java.sql.Time;
+import java.sql.Date;
+
+
+@Entity
+@Table(name = "OrderList")
 public class Order {
     private Integer id = null;
     private float price = 0;
-    private Calendar date = null;
-    private Customer customer = null;
-    private Cinema cinema = null;
-    private Movie movie = null;
-    private Seat seat = null;
+    private Integer customer = null;
+    private Integer cinema = null;
+    private Date date = null;
+    private Time time = null;
+    private Integer movie = null;
+    private Integer room = null;
+    private Integer row = null;
+    private Integer col = null;
     
     public Order() {
         super();
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "OrderId")
     public Integer getId() {
         return this.id;
     }
@@ -22,6 +39,7 @@ public class Order {
         this.id = id;
     }
     
+    @Column(name = "Price")
     public float getPrice() {
     	return this.price;
     }
@@ -29,40 +47,68 @@ public class Order {
     	this.price = price;
     }
 
-    public Calendar getDate() {
+    @Column(name = "Date")
+    public Date getDate() {
         return this.date;
     }
-    public void setDate(final Calendar date) {
+    public void setDate(final Date date) {
         this.date = date;
     }
 
-    public Customer getCustomer() {
+    @Column(name = "Time")
+    public Time getTime() {
+        return this.time;
+    }
+    public void setTime(final Time time) {
+        this.time = time;
+    }
+
+    @Column(name = "UserId")
+    public Integer getCustomer() {
         return this.customer;
     }
-    public void setCustomer(final Customer customer) {
+    public void setCustomer(final Integer customer) {
         this.customer = customer;
     }
 
-    public Cinema getCinema() {
+    @Column(name = "CinemaId")
+    public Integer getCinema() {
         return this.cinema;
     }
-    public void setCinema(final Cinema cinema) {
+    public void setCinema(final Integer cinema) {
         this.cinema = cinema;
     }
-    
 
-    public Movie getMovie() {
+    @Column(name = "MovieId")
+    public Integer getMovie() {
         return this.movie;
     }
-    public void setMovie(final Movie movie) {
+    public void setMovie(final Integer movie) {
         this.movie = movie;
     }
 
-    public Seat getSeat() {
-        return this.seat;
+    @Column(name = "Room")
+    public Integer getRoom() {
+        return this.room;
     }
-    public void setSeat(final Seat seat) {
-        this.seat = seat;
+    public void setRoom(final Integer room) {
+        this.room = room;
+    }
+
+    @Column(name = "Row")
+    public Integer getRow() {
+        return this.row;
+    }
+    public void setRow(final Integer row) {
+        this.row = row;
+    }
+
+    @Column(name = "Col")
+    public Integer getCol() {
+        return this.col;
+    }
+    public void setCol(final Integer col) {
+        this.col = col;
     }
 
 }

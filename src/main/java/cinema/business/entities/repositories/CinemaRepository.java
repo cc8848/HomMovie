@@ -1,39 +1,24 @@
 package cinema.business.entities.repositories;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import cinema.business.entities.Cinema;
 
-public class CinemaRepository {
-    private static final CinemaRepository INSTANCE = new CinemaRepository();
-    private final Map<Integer,Cinema> cinemasById;
+@Repository
+public interface CinemaRepository extends CrudRepository<Cinema, Integer> {
+    @Query("select * from Cinema")
+    public List<Cinema> findAll();
 
-    public static CinemaRepository getInstance() {
-        return INSTANCE;
-    }
-   
-    private CinemaRepository() {
-        super();
-        this.cinemasById = new LinkedHashMap<Integer, Cinema>();
-    }
-    
-    public void addCinema(Cinema cinema) {
-    	this.cinemasById.put(cinema.getId(), cinema);
-    }
+    @Query("select * from Cinema where CinemaId = ?1")
+    public Cinema findById(final Integer id);
 
-    public void deleteCinema(Cinema cinema) {
-    	this.cinemasById.remove(cinema.getId());
-    }
-    
-    public List<Cinema> findAll() {
-        return new ArrayList<Cinema>(this.cinemasById.values());
-    }
-    
-    public Cinema findById(final Integer id) {
-        return this.cinemasById.get(id);
-    }
+    @Query("select * from Cinema where CinemaName = ?1")
+    public Cinema findByName(final String name);
+
+    @Query("select * from Cinema where CinemaAddress like ?1")
+    public Cinema findByAddr(final String addr);
     
 }
